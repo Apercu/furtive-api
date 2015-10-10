@@ -1,0 +1,35 @@
+{
+  "name": "furtive-api",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint ./{controllers,services}/*.js index.js routes.js",
+    "start": "nodemon launch.js -e js",
+    "prod": "node launch.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Apercu/furtive-api.git"
+  },
+  "author": "Balthazar Gronon",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Apercu/furtive-api/issues"
+  },
+  "homepage": "https://github.com/Apercu/furtive-api#readme",
+  "devDependencies": {
+    "babel-eslint": "^4.1.3",
+    "eslint": "^1.6.0",
+    "eslint-config-zavatta": "^1.1.6",
+    "nodemon": "^1.7.1"
+  },
+  "dependencies": {
+    "babel": "^5.8.23",
+    "body-parser": "^1.14.1",
+    "compression": "^1.6.0",
+    "express": "^4.13.3",
+    "lodash": "^3.10.1",
+    "q": "^1.4.1"
+  }
+}
