@@ -4,15 +4,6 @@ import q from 'q';
 import { exec } from 'child_process';
 
 /**
- * Shutdown the computer
- *
- * @returns {Promise}
- */
-export function shutdown () {
-  return q.nfcall(exec, 'shutdown -h now');
-}
-
-/**
  * Get basic informations
  * - uname
  *
@@ -22,6 +13,19 @@ export function infos () {
   return q.nfcall(exec, 'uname')
     .then(data => {
       return { system: data[0].trim() };
+    });
+}
+
+/**
+ * Shutdown the computer
+ * Prepend sudo to the command if in OSX
+ *
+ * @returns {Promise}
+ */
+export function shutdown () {
+  return infos()
+    .then(data => {
+      return q.nfcall(exec, `${data.system === 'Darwin' ? 'sudo ' : '' }shutdown -h now`);
     });
 }
 
