@@ -10,6 +10,7 @@ export default function (router) {
 
   router.get('/system/infos', SysCtrl.infos);
   router.put('/system/say', SysCtrl.say);
+  router.put('/system/mute', SysCtrl.mute);
   router.put('/system/shutdown', SysCtrl.shutdown);
 
 }

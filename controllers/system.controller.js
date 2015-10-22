@@ -16,12 +16,23 @@ export function shutdown (req, res) {
 
 export function say (req, res) {
 
-  SystemService.infos()
-    .then(data => {
-      if (data.system !== 'Darwin') { throw new Error('Not OSX.'); }
-      if (!req.body.str) { throw new Error('No input.'); }
-      return SystemService.say(req.body.str);
+  if (!req.body.str) {
+    return res.status(400).send({ message: 'No input.' });
+  }
+
+  SystemService.say(req.body.str)
+    .then(() => {
+      res.status(200).end();
     })
+    .catch(err => {
+      res.status(400).send({ message: err.message });
+    });
+
+}
+
+export function mute (req, res) {
+
+  SystemService.mute()
     .then(() => {
       res.status(200).end();
     })
